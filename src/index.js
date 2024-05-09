@@ -1,7 +1,8 @@
 class HashMap {
   constructor() {
-    this.tableSize = 2;
+    this.tableSize = 1;
     this.loadFactor = 0.75;
+    this.storage = [];
   }
 
   hash(key) {
@@ -13,6 +14,24 @@ class HashMap {
     }
 
     return hashCode;
+  }
+
+  set(key, value) {
+    const index = this.hash(key)
+    if(storage[index] === undefined){
+      storage[index] = [[key, value]];
+    } else {
+      let inserted = false;
+      for(let i = 0; i < storage[index].length; i += 1) {
+        if(storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if (inserted === false)  {
+        storage[index].push([key, value]);
+      }
+    }
   }
 }
 
