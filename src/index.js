@@ -1,20 +1,16 @@
+function hash(key) {
+  let hashCode = 0;
+
+  const primeNumber = 31;
+  for (let i = 0; i < key.length; i += 1) {
+    hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.tableSize;
+  }
+
+  return hashCode;
+}
+
 class HashMap {
-  constructor() {
-    this.tableSize = 1;
-    this.loadFactor = 0.75;
-    this.storage = [];
-  }
-
-  hash(key) {
-    let hashCode = 0;
-
-    const primeNumber = 31;
-    for (let i = 0; i < key.length; i += 1) {
-      hashCode = (primeNumber * hashCode + key.charCodeAt(i)) % this.tableSize;
-    }
-
-    return hashCode;
-  }
+  map = new Array(97);
 
   set(key, value) {
     const index = this.hash(key)
@@ -28,7 +24,7 @@ class HashMap {
           inserted = true;
         }
       }
-      if (inserted === false)  {
+      if (!inserted)  {
         storage[index].push([key, value]);
       }
     }
