@@ -2,19 +2,19 @@ import Node from './Node';
 
 class Tree {
   constructor(arr) {
-    this.tree = arr.sort();
-    this.root = this.buildTree(arr);
+    this.sortedArr = arr.sort();
+    this.root = this.buildTree();
   }
 
-  buildTree(arr = this.tree, start = 0, end = this.tree.length - 1) {
+  buildTree(arr = this.sortedArr, start = 0, end = this.sortedArr.length - 1) {
     if (start > end) {
       return null;
     }
 
-    const mid = Math.floor((start + end) / 2);
+    const mid = parseInt((start + end) / 2, 10);
     const node = new Node(arr[mid]);
     node.left = this.buildTree(arr, start, mid - 1);
-    node.left = this.buildTree(arr, mid + 1, end);
+    node.right = this.buildTree(arr, mid + 1, end);
 
     return node;
   }
