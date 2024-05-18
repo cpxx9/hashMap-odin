@@ -33,12 +33,12 @@ class Tree {
       if (root.left === null) {
         root.left = newNode;
       } else {
-        this.insertNode(root.left, newNode);
+        this.#insertNode(root.left, newNode);
       }
     } else if (root.right === null) {
       root.right = newNode;
     } else {
-      this.insertNode(root.right, newNode);
+      this.#insertNode(root.right, newNode);
     }
   }
 }

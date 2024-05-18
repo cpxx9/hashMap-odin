@@ -1,6 +1,6 @@
 import Tree from './modules/Tree';
 
-const tree = new Tree([3, 5, 9, 7, 1, 5, 8, 6, 2, 4]);
+const tree = new Tree([3, 5, 9, 1, 5, 8, 6, 2, 4]);
 
 const prettyPrint = (node, prefix = '', isLeft = true) => {
   if (node === null) {
@@ -14,5 +14,7 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
   }
 };
+
+tree.insert(7);
 
 console.log(prettyPrint(tree.root));
